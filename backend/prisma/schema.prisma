@@ -50,6 +50,7 @@ model Vendor {
 
   user         User      @relation(fields: [email], references: [email])
   products Product[]
+  orders       Order[]
 
   @@map("vendors")
 }
@@ -66,6 +67,7 @@ model Customer {
   updatedAt    DateTime @updatedAt
 
   user         User     @relation(fields: [email], references: [email])
+  orders       Order[]
  
   @@map("customers")
 }
@@ -99,9 +101,29 @@ model Product {
 
   category    Category    @relation(fields: [categoryId], references: [id])
   vendor      Vendor      @relation(fields: [vendorId], references: [id])
+    orders      Order[]     @relation("OrderToProduct")
 
   @@map("products")
 }
+
+model Order {
+  id          String      @id @default(uuid())
+  customerId  String
+  vendorId    String
+  quantity    Int
+  totalAmount Float
+  status      OrderStatus @default(PENDING)
+  createdAt   DateTime    @default(now())
+  updatedAt   DateTime    @updatedAt
+  deletedAt   DateTime?
+  customer    Customer    @relation(fields: [customerId], references: [id])
+  vendor      Vendor      @relation(fields: [vendorId], references: [id])
+  products    Product[]   @relation("OrderToProduct")
+
+
+  @@map("orders")
+}
+
 
 
 
