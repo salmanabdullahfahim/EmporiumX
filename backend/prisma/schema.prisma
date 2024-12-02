@@ -106,6 +106,7 @@ model Product {
   vendor      Vendor      @relation(fields: [vendorId], references: [id])
   orders      Order[]     @relation("OrderToProduct")
   reviews     Review[]
+  flashSales FlashSale[]
 
   @@map("products")
 }
@@ -153,6 +154,21 @@ model Review {
 
   @@map("reviews")
 }
+
+model FlashSale {
+  id        String   @id @default(uuid())
+  productId String
+  discount  Float
+  startTime DateTime
+  endTime   DateTime
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  product   Product  @relation(fields: [productId], references: [id])
+
+
+  @@map("flash_sales")
+}
+
 
 
 
