@@ -16,7 +16,7 @@ app.use(express.urlencoded({ extended: true }));
 
 app.get("/", (req: Request, res: Response) => {
   res.send({
-    Message: "ShopEase server is running correctly",
+    Message: "EmporiumX server is running correctly",
   });
 });
 
