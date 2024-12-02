@@ -70,6 +70,7 @@ model Customer {
   user         User     @relation(fields: [email], references: [email])
   orders       Order[]
   follows      Follow[]
+  reviews      Review[]
  
   @@map("customers")
 }
@@ -82,7 +83,7 @@ model Category {
   updatedAt   DateTime  @updatedAt
   deletedAt   DateTime?
 
-  products Product[]
+  products    Product[]
 
   @@map("categories")
 }
@@ -103,7 +104,8 @@ model Product {
 
   category    Category    @relation(fields: [categoryId], references: [id])
   vendor      Vendor      @relation(fields: [vendorId], references: [id])
-    orders      Order[]     @relation("OrderToProduct")
+  orders      Order[]     @relation("OrderToProduct")
+  reviews     Review[]
 
   @@map("products")
 }
@@ -137,8 +139,20 @@ model Follow {
   @@map("follows")
 }
 
+model Review {
+  id         String   @id @default(uuid())
+  customerId String
+  productId  String
+  rating     Int
+  comment    String?
+  createdAt  DateTime @default(now())
+  updatedAt  DateTime @updatedAt
+  customer   Customer @relation(fields: [customerId], references: [id])
+  product    Product  @relation(fields: [productId], references: [id])
 
 
+  @@map("reviews")
+}
 
 
 
