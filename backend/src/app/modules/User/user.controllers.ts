@@ -36,8 +36,34 @@ const createCustomer = catchAsync(async (req: Request, res: Response) => {
   });
 });
 
+// delete & suspend user
+
+const deleteUser = catchAsync(async (req: Request, res: Response) => {
+  const { id } = req.params;
+  const result = await UserServices.deleteUserFromDB(id);
+  sendResponse(res, {
+    statusCode: StatusCodes.OK,
+    success: true,
+    message: "User deleted successfully",
+    data: result,
+  });
+});
+
+const suspendUser = catchAsync(async (req: Request, res: Response) => {
+  const { id } = req.params;
+  const result = await UserServices.suspendUserFromDB(id);
+  sendResponse(res, {
+    statusCode: StatusCodes.OK,
+    success: true,
+    message: "User suspended successfully",
+    data: result,
+  });
+});
+
 export const UserControllers = {
   createAdmin,
   createVendor,
   createCustomer,
+  deleteUser,
+  suspendUser,
 };

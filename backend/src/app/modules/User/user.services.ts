@@ -102,8 +102,46 @@ const createCustomerIntoDB = async (req: Request): Promise<Admin> => {
   return result;
 };
 
+const deleteUserFromDB = async (id: string) => {
+  await prisma.user.findUniqueOrThrow({
+    where: {
+      id,
+    },
+  });
+  const result = await prisma.user.update({
+    where: {
+      id,
+    },
+    data: {
+      isDeleted: true,
+    },
+  });
+
+  return result;
+};
+
+const suspendUserFromDB = async (id: string) => {
+  await prisma.user.findUniqueOrThrow({
+    where: {
+      id,
+    },
+  });
+  const result = await prisma.user.update({
+    where: {
+      id,
+    },
+    data: {
+      isSuspended: true,
+    },
+  });
+
+  return result;
+};
+
 export const UserServices = {
   createAdminIntoDB,
   createVendorIntoDB,
   createCustomerIntoDB,
+  deleteUserFromDB,
+  suspendUserFromDB,
 };
