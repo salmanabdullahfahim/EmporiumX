@@ -13,6 +13,8 @@ model User {
   password  String
   role      UserRole
   name      String
+  isDeleted    Boolean  @default(false)
+  isSuspended  Boolean   @default(false)
   createdAt DateTime  @default(now())
   updatedAt DateTime  @updatedAt
   deletedAt DateTime?
@@ -29,7 +31,6 @@ model Admin {
   name         String
   email        String   @unique
   profilePhoto String?
-  isDeleted    Boolean  @default(false)
   createdAt    DateTime @default(now())
   updatedAt    DateTime @updatedAt
 
@@ -43,8 +44,6 @@ model Vendor {
   name         String
   email        String    @unique
   profilePhoto String?
-  isDeleted    Boolean   @default(false)
-  isSuspended  Boolean   @default(false)
   createdAt    DateTime  @default(now())
   updatedAt    DateTime  @updatedAt
 
@@ -62,8 +61,6 @@ model Customer {
   name         String
   email        String   @unique
   profilePhoto String?
-  isDeleted    Boolean  @default(false)
-  isSuspended  Boolean  @default(false)
   createdAt    DateTime @default(now())
   updatedAt    DateTime @updatedAt
 
