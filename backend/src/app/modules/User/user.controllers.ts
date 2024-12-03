@@ -14,7 +14,30 @@ const createAdmin = catchAsync(async (req: Request, res: Response) => {
     data: result,
   });
 });
+const createVendor = catchAsync(async (req: Request, res: Response) => {
+  const result = await UserServices.createVendorIntoDB(req);
+  console.log(req.body.data);
+  sendResponse(res, {
+    statusCode: StatusCodes.OK,
+    success: true,
+    message: "Vendor created successfully",
+    data: result,
+  });
+});
+
+const createCustomer = catchAsync(async (req: Request, res: Response) => {
+  const result = await UserServices.createCustomerIntoDB(req);
+  console.log(req.body.data);
+  sendResponse(res, {
+    statusCode: StatusCodes.OK,
+    success: true,
+    message: "Customer created successfully",
+    data: result,
+  });
+});
 
 export const UserControllers = {
   createAdmin,
+  createVendor,
+  createCustomer,
 };
