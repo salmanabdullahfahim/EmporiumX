@@ -1,4 +1,4 @@
-import { Admin, UserRole } from "@prisma/client";
+import { Admin, Customer, UserRole, Vendor } from "@prisma/client";
 import { Request } from "express";
 import prisma from "../../../shared/prisma";
 import * as bcrypt from "bcrypt";
@@ -37,13 +37,13 @@ const createAdminIntoDB = async (req: Request): Promise<Admin> => {
 
   return result;
 };
-const createVendorIntoDB = async (req: Request): Promise<Admin> => {
+const createVendorIntoDB = async (req: Request): Promise<Vendor> => {
   const file = req.file as IFile;
 
   if (file) {
     const uploadToCloudinary = await fileUploader.uploadToCloudinary(file);
 
-    req.body.vendor.profilePhoto = uploadToCloudinary?.secure_url;
+    req.body.vendor.logo = uploadToCloudinary?.secure_url;
   }
 
   const hashedPassword: string = await bcrypt.hash(req.body.password, 12);
@@ -69,7 +69,7 @@ const createVendorIntoDB = async (req: Request): Promise<Admin> => {
 
   return result;
 };
-const createCustomerIntoDB = async (req: Request): Promise<Admin> => {
+const createCustomerIntoDB = async (req: Request): Promise<Customer> => {
   const file = req.file as IFile;
 
   if (file) {
