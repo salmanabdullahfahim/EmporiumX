@@ -35,7 +35,23 @@ const updateProductIntoDB = async (id: string, req: Request) => {
 
   return result;
 };
+
+const deleteProductFromDB = async (id: string) => {
+  await prisma.product.findUniqueOrThrow({
+    where: {
+      id,
+    },
+  });
+  const result = await prisma.product.delete({
+    where: {
+      id,
+    },
+  });
+
+  return result;
+};
 export const ProductServices = {
   createProductIntoDB,
   updateProductIntoDB,
+  deleteProductFromDB,
 };
