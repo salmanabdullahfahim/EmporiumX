@@ -20,6 +20,22 @@ const createProductIntoDB = async (req: Request) => {
   return result;
 };
 
+const updateProductIntoDB = async (id: string, req: Request) => {
+  await prisma.product.findUniqueOrThrow({
+    where: {
+      id,
+    },
+  });
+  const result = await prisma.product.update({
+    where: {
+      id,
+    },
+    data: req.body,
+  });
+
+  return result;
+};
 export const ProductServices = {
   createProductIntoDB,
+  updateProductIntoDB,
 };

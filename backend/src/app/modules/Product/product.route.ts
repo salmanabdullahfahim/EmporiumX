@@ -18,4 +18,11 @@ router.post(
   }
 );
 
+router.patch(
+  "/update-product/:id",
+  auth(UserRole.VENDOR),
+
+  ProductControllers.updateProduct
+);
+
 export const ProductRoutes = router;
