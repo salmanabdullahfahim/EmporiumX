@@ -112,9 +112,20 @@ const getAllProductsFromDB = async (
     meta: { page, limit, total },
   };
 };
+
+const getProduct = async (id: string) => {
+  const result = await prisma.product.findUniqueOrThrow({
+    where: {
+      id,
+    },
+  });
+
+  return result;
+};
 export const ProductServices = {
   createProductIntoDB,
   updateProductIntoDB,
   deleteProductFromDB,
   getAllProductsFromDB,
+  getProduct,
 };
