@@ -9,9 +9,9 @@ const FlashSaleCard = (flashSale: FlashSaleType) => {
       <Image
         src={flashSale.product.images[0]}
         alt={flashSale.product.name}
-        width={200}
+        width={300}
         height={300}
-        className="aspect-[16/9] w-full rounded-md md:aspect-auto md:h-[300px] lg:h-[200px] "
+        className="w-full rounded-md"
       />
       <div className="p-4">
         <h1 className="inline-flex items-center text-lg font-semibold">
