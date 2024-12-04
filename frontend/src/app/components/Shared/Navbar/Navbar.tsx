@@ -35,7 +35,7 @@ const Navbar = () => {
   ];
 
   return (
-    <div className=" bg-white flex items-center justify-between h-[65px] p-10 md:px-12   w-full shadow-md sticky top-0 z-20">
+    <div className=" bg-white flex items-center justify-between h-[65px] p-8 md:px-12   w-full shadow-md sticky top-0 z-20">
       {/* Company logo or name */}
       <Logo />
       {/* desktop menu */}

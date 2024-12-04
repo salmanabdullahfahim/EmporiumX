@@ -1,7 +1,9 @@
+import Banner from "../components/Home/Banner/Banner";
+
 export default function Home() {
   return (
     <div>
-      <h2 className="">Hello Emporium X</h2>
+      <Banner />
     </div>
   );
 }
