@@ -5,8 +5,8 @@ import { PiCaretLeftLight, PiCaretRightLight } from "react-icons/pi";
 import BannerText from "./BannerText";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
-import BannerImage1 from "../../../../../public/1.png";
-import BannerImage2 from "../../../../../public/2.png";
+import BannerImage1 from "../../../../public/1.png";
+import BannerImage2 from "../../../../public/2.png";
 
 interface ArrowProps {
   onClick?: () => void;
