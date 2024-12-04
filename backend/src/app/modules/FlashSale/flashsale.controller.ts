@@ -43,23 +43,18 @@ const getAFlashSale = catchAsync(async (req: Request, res: Response) => {
   });
 });
 
-const updateAFlashSale = catchAsync(
-  async (req: Request & { user?: any }, res: Response) => {
-    const { id: productId } = req.params;
+const updateAFlashSale = catchAsync(async (req: Request, res: Response) => {
+  const { id: productId } = req.params;
 
-    const result = await FlashSaleServices.updateAFlashSale(
-      productId,
-      req.body
-    );
+  const result = await FlashSaleServices.updateAFlashSale(productId, req.body);
 
-    sendResponse(res, {
-      statusCode: 200,
-      success: true,
-      message: "Flash Sale updated successfully",
-      data: result,
-    });
-  }
-);
+  sendResponse(res, {
+    statusCode: 200,
+    success: true,
+    message: "Flash Sale updated successfully",
+    data: result,
+  });
+});
 
 export const FlashSaleController = {
   createAFlashSale,
