@@ -43,8 +43,17 @@ const getAllFlashSale = async (options: TPaginationOptions) => {
 
   const total = await prisma.flashSale.count({
     where: {
-      startTime: { lte: new Date() },
-      endTime: { gte: new Date() },
+      OR: [
+        {
+          // Active flash sales
+          startTime: { lte: now },
+          endTime: { gte: now },
+        },
+        {
+          // Upcoming flash sales
+          startTime: { gt: now },
+        },
+      ],
     },
   });
 
