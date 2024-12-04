@@ -5,16 +5,17 @@ const Logo = () => {
   return (
     <Link
       href="/"
-      className="text-2xl md:text-[1.7rem] font-semibold cursor-pointer duration-200 flex items-center italic gap-x-3"
+      className="text-2xl md:text-[1.7rem] font-semibold cursor-pointer duration-200 flex items-center justify-center italic gap-x-3"
     >
       <Image
-        src="https://res.cloudinary.com/doq34sr4q/image/upload/v1727678488/logo_uspvfb.png"
+        src="https://res.cloudinary.com/dwhmtgghz/image/upload/v1733315542/vecteezy_letter-e-gradient-logo-design_-removebg-preview_pjgzet.png"
         alt="Logo"
-        width={50}
-        height={50}
+        width={70}
+        height={70}
+        className="mt-2"
       />
       <p className="text-md">
-        Grow<span className=" text-green-600">Sphere</span>
+        Emporium<span className=" text-blue-500">X</span>
       </p>
     </Link>
   );
