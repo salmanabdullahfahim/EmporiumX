@@ -4,7 +4,7 @@ require("dotenv").config();
 import router from "./app/routes";
 import globalErrorHandler from "./app/middlewares/globalErrorHandler";
 import cookieParser from "cookie-parser";
-console.log(process.env.DATABASE_URL);
+import path from "path";
 
 const app: Application = express();
 app.use(cors());
@@ -19,6 +19,8 @@ app.get("/", (req: Request, res: Response) => {
     Message: "EmporiumX server is running properly",
   });
 });
+
+app.use(express.static(path.join(__dirname, "public")));
 
 app.use("/api/v1", router);
 

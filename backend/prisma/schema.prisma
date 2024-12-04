@@ -101,7 +101,7 @@ model Product {
 
   category    Category    @relation(fields: [categoryId], references: [id])
   vendor      Vendor      @relation(fields: [vendorId], references: [id])
-  orders      Order[]     @relation("OrderToProduct")
+  orderItems  OrderItem[]
   reviews     Review[]
   flashSales FlashSale[]
 
@@ -112,17 +112,35 @@ model Order {
   id          String      @id @default(uuid())
   customerId  String
   vendorId    String
-  quantity    Int
   totalAmount Float
   status      OrderStatus @default(PENDING)
+  address     String
+  city        String
+  postalCode     String
+  phone       String
   createdAt   DateTime    @default(now())
   updatedAt   DateTime    @updatedAt
   deletedAt   DateTime?
+  payment     Payment?
+  
   customer    Customer    @relation(fields: [customerId], references: [id])
   vendor      Vendor      @relation(fields: [vendorId], references: [id])
-  products    Product[]   @relation("OrderToProduct")
+  orderItems  OrderItem[]
 
   @@map("orders")
+}
+
+model OrderItem {
+  id        String   @id @default(uuid())
+  orderId   String
+  productId String
+  quantity  Int
+  price     Float
+  
+  order     Order    @relation(fields: [orderId], references: [id])
+  product   Product  @relation(fields: [productId], references: [id])
+
+  @@map("order_items")
 }
 
 model Follow {
@@ -166,8 +184,18 @@ model FlashSale {
   @@map("flash_sales")
 }
 
+model Payment {
+  id            String        @id @default(uuid())
+  orderId       String       @unique
+  amount        Float
+  transactionId String
+  createdAt     DateTime     @default(now())
+  updatedAt     DateTime     @updatedAt
 
+  order         Order        @relation(fields: [orderId], references: [id])
 
+  @@map("payments")
+}
 
 enum UserRole {
   SUPER_ADMIN
@@ -181,5 +209,9 @@ enum OrderStatus {
   COMPLETED
   CANCELLED
 }
+
+
+
+
 
 
