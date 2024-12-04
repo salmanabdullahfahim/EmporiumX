@@ -122,10 +122,34 @@ const getProduct = async (id: string) => {
 
   return result;
 };
+
+const duplicateAProduct = async (id: string) => {
+  // find existing product
+  // remove id, createdAt, updatedAt, deletedAt
+  // add the data to db
+  const result = await prisma.product.findUniqueOrThrow({
+    where: {
+      id,
+    },
+  });
+
+  const {
+    id: _,
+    updatedAt: __,
+    createdAt: ___,
+    deletedAt: ____,
+    ...duplicateData
+  } = result;
+
+  return await prisma.product.create({
+    data: duplicateData,
+  });
+};
 export const ProductServices = {
   createProductIntoDB,
   updateProductIntoDB,
   deleteProductFromDB,
   getAllProductsFromDB,
   getProduct,
+  duplicateAProduct,
 };

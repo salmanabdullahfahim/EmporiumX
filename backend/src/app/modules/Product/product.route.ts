@@ -36,4 +36,10 @@ router.get("/", ProductControllers.getAllProducts);
 
 router.get("/:id", ProductControllers.getProductById);
 
+router.post(
+  "/duplicate-product/:id",
+  auth(UserRole.VENDOR),
+  ProductControllers.duplicateAProduct
+);
+
 export const ProductRoutes = router;
