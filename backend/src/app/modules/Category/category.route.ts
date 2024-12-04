@@ -23,4 +23,10 @@ router.delete(
   CategoryControllers.deleteCategory
 );
 
+router.get(
+  "/",
+  auth(UserRole.ADMIN, UserRole.VENDOR),
+  CategoryControllers.getAllCategories
+);
+
 export const CategoryRoutes = router;
