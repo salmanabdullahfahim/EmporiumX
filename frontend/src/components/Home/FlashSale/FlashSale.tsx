@@ -5,7 +5,7 @@ import { FlashSaleType } from "@/types";
 
 const FlashSale = async () => {
   const flashSales = await getFlashSale();
-  console.log(flashSales.data);
+
   return (
     <div className="md:mx-12 my-12">
       <h2 className="italic text-4xl font-semibold mb-4">Flash Sale⚡</h2>
