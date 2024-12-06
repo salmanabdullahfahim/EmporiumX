@@ -62,7 +62,7 @@ const SignUpForm = () => {
       <div className="w-full relative mb-6">
         <input
           type="text"
-          className="bg-transparent border-b border-black focus:outline-none focus:border-green-600 text-sm w-full py-2"
+          className="bg-transparent border-b border-black focus:outline-none focus:border-blue-600 text-sm w-full py-2"
           placeholder="Name"
           {...register("name", { required: "Name is required" })}
         />
@@ -80,7 +80,7 @@ const SignUpForm = () => {
       <div className="w-full relative mb-6">
         <input
           type="email"
-          className="bg-transparent border-b border-black focus:outline-none focus:border-green-600 text-sm w-full py-2"
+          className="bg-transparent border-b border-black focus:outline-none focus:border-blue-600 text-sm w-full py-2"
           placeholder="Email Address"
           {...register("email", {
             required: "Email is required",
@@ -101,7 +101,7 @@ const SignUpForm = () => {
       <div className="w-full relative mb-6">
         <input
           type="password"
-          className="bg-transparent border-b border-black focus:outline-none focus:border-green-600 text-sm w-full py-2"
+          className="bg-transparent border-b border-black focus:outline-none focus:border-blue-600 text-sm w-full py-2"
           placeholder="Password"
           {...register("password", {
             required: "Password is required",
@@ -123,7 +123,7 @@ const SignUpForm = () => {
         <input
           type="file"
           accept="image/*"
-          className="bg-transparent border-b border-black focus:outline-none focus:border-green-600 text-sm w-full py-2"
+          className="bg-transparent border-b border-black focus:outline-none focus:border-blue-600 text-sm w-full py-2"
           {...register("profileImage")}
         />
         <ImageIcon
@@ -134,7 +134,7 @@ const SignUpForm = () => {
 
       <button
         type="submit"
-        className="bg-green-500 py-4 px-10 text-white hover:bg-opacity-95 duration-300 mt-4 flex items-center rounded-md font-semibold disabled:opacity-50 disabled:cursor-not-allowed"
+        className="bg-blue-500 py-4 px-10 text-white hover:bg-opacity-95 duration-300 mt-4 flex items-center rounded-md font-semibold disabled:opacity-50 disabled:cursor-not-allowed"
         disabled={isLoading}
       >
         {isLoading ? (
@@ -169,10 +169,20 @@ const UserSignUp = () => {
                       Already have an account?
                       <Link
                         href="/signin"
-                        className="underline hover:text-green-600 duration-300"
+                        className="underline hover:text-blue-600 duration-300"
                       >
                         {" "}
                         Sign In
+                      </Link>
+                    </div>
+                    <div className="text-center mt-12">
+                      Want to be a vendor?
+                      <Link
+                        href="/vendorSignUp"
+                        className="underline hover:text-blue-600 duration-300"
+                      >
+                        {" "}
+                        SignUp as Vendor
                       </Link>
                     </div>
                   </div>
