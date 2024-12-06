@@ -178,7 +178,7 @@ const UserSignUp = () => {
                     <div className="text-center mt-12">
                       Want to be a vendor?
                       <Link
-                        href="/vendorSignUp"
+                        href="/vendorSignup"
                         className="underline hover:text-blue-600 duration-300"
                       >
                         {" "}
