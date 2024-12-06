@@ -6,7 +6,7 @@ import { Request, Response } from "express";
 
 const createAdmin = catchAsync(async (req: Request, res: Response) => {
   const result = await UserServices.createAdminIntoDB(req);
-  console.log(req.body.data);
+
   sendResponse(res, {
     statusCode: StatusCodes.OK,
     success: true,
@@ -27,7 +27,7 @@ const createVendor = catchAsync(async (req: Request, res: Response) => {
 
 const createCustomer = catchAsync(async (req: Request, res: Response) => {
   const result = await UserServices.createCustomerIntoDB(req);
-  console.log(req.body.data);
+  console.log(req.body);
   sendResponse(res, {
     statusCode: StatusCodes.OK,
     success: true,

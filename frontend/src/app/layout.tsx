@@ -3,6 +3,7 @@ import localFont from "next/font/local";
 import "./globals.css";
 
 import ReduxStoreProvider from "@/Provider/ReduxStoreProvider";
+import { Toaster } from "sonner";
 
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
@@ -30,6 +31,7 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
+        <Toaster />
         <ReduxStoreProvider> {children}</ReduxStoreProvider>
       </body>
     </html>
